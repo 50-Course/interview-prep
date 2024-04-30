@@ -1,5 +1,5 @@
-Study topics I want to focus on
-===============================
+Study topics I want to focus on to efficiently prepare for technical interviews.
+===============================================================================
 
 - **Data Structures**
   - Arrays
@@ -9,7 +9,7 @@ Study topics I want to focus on
   - Trees
       - Heaps
       - Tries (Prefix Trees)
-  - Graphs
+  - Graphs (everything on graphs, and then some more on Graph search algorithms)
   - Hash Tables
 
 - **Algorithms**
@@ -26,5 +26,8 @@ Study topics I want to focus on
   - Problem solving patterns
   - Problem solving strategies
 
+Miscellaneous
+=============
+- Matrix multiplication
 
 Commitment (hrs/day): 5 hours/day - 2-3 time blocks
