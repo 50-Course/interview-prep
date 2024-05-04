@@ -16,6 +16,24 @@ def connected_components_count(graph):
         """
         Takes in a starting node and iterate through the graph
         """
+        pass
+
+
+def connected_components_count_recursive(graph):
+    """
+    Recursie approch to using BFS in ounting connted components
+
+    Takes in an undirected graph, and returns the count of the conncted
+    nodes
+    """
+    count = 0
+    visited = set()
+    queue = deque([])
+
+    def bfs(node):
+        """
+        Takes in a starting node and iterate through the graph
+        """
         queue.append(node)
         visited.add(node)
         for neighbor in graph[node]:
