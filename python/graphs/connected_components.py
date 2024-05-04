@@ -12,11 +12,20 @@ def connected_components_count(graph):
     count = 0
     queue = deque([])
 
-    def bfs(node):
-        """
-        Takes in a starting node and iterate through the graph
-        """
-        pass
+    for node in graph:
+        if node not in visited:
+            queue.append(node)
+
+            while queue:
+                current = queue.pop()
+                visited.add(current)
+                for neighbor in graph[current]:
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+            count += 1
+    return count
+
+
 
 
 def connected_components_count_recursive(graph):
@@ -46,7 +55,6 @@ def connected_components_count_recursive(graph):
             bfs(node)
             count +=1
     return count
-
 
 
 
@@ -116,5 +124,7 @@ if __name__ == '__main__':
     print(connected_graphs(graph))
     print('======================')
     print(connected_graphs_recursive(graph))
+    print('======================')
+    print(connected_components_count_recursive(graph))
     print('======================')
     print(connected_components_count(graph))
