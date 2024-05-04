@@ -21,6 +21,38 @@ def connected_graphs(graph):
             count += 1
     return count
 
+def connected_graphs_recursive(graph) -> int:
+    """
+    Recursive approach to figuring out the number of connected components in
+    an undirected graph - using DFS.
+
+    Returns:
+        The number of connected components in the graph
+    """
+    count = 0
+    visited = set()
+
+    def dfs(node):
+        """
+        Actual implementation of a recursive dfs
+
+        Takes in the starting node (a point in the graph) and walks the graph
+        """
+        visited.add(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                dfs(neighbor)
+
+    for node in graph:
+        if node not in visited:
+            dfs(node)
+            count +=1
+    return count
+
+
+
+
 
 if __name__ == '__main__':
     graph = {
@@ -33,3 +65,6 @@ if __name__ == '__main__':
         4: [3, 2]
     }
     print(connected_graphs(graph))
+    print('======================')
+    print(connected_graphs_recursive(graph))
+    print('======================')
