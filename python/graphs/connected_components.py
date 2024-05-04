@@ -1,6 +1,37 @@
+from collections import deque
+
 # Write a function that takes a in the adjanency list of an
 # undirected graph, The function should return the num of
 # connected componenets in the graph
+def connected_components_count(graph):
+    """
+    Iterative approach in finding the connted components of an 
+    undirected graph using BFS
+    """
+    visited = set()
+    count = 0
+    queue = deque([])
+
+    def bfs(node):
+        """
+        Takes in a starting node and iterate through the graph
+        """
+        queue.append(node)
+        visited.add(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                bfs(neighbor)
+
+    for node in graph:
+        if node not in visited:
+            bfs(node)
+            count +=1
+    return count
+
+
+
+
 def connected_graphs(graph):
     count = 0
     stack = []
@@ -68,3 +99,4 @@ if __name__ == '__main__':
     print('======================')
     print(connected_graphs_recursive(graph))
     print('======================')
+    print(connected_components_count(graph))
