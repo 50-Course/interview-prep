@@ -1,8 +1,9 @@
 def suffix_sum(array: list[int]) ->  list[int]:
     result = [0] * len(array)
 
-    for i in range(1,  len(array)):
-        result[i] = result[i - 1] + array[i - 1]
+    result[-1] = array[-1]
+    for i in range((len(array)-2), 0, -1):
+        result[i] = result[i + 1] + array[i]
     return result
 
 if __name__ == "__main__":
