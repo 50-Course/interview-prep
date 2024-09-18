@@ -4,7 +4,9 @@
 //
 // Note: You dunno, if you don't gerrit, forget abbourrit
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * PrefixSum
@@ -53,7 +55,12 @@ public class PrefixSum {
         return result;
     }
 
-    // takes in an array and returns the cummuative sum
+    /**
+     * Takes in a list of values, reverse it and returns the inclusive sum upto the
+     * stop index.
+     *
+     * @param array some list of postive numbers
+     */
     public static ArrayList<Integer> prefix(
             List<Integer> array, Integer stopIndex,
             Boolean reversed) {
@@ -62,45 +69,39 @@ public class PrefixSum {
         int i = 0;
         ArrayList<Integer> result = new ArrayList<>();
 
-        if (stopIndex == null) {
+        if (stopIndex == null || stopIndex < 0) {
             stopIndex = array.size();
         } else if (stopIndex > array.size()) {
             stopIndex = array.size();
         }
 
-        if (!reversed) {
-            while (i < stopIndex) {
-                cumSum += array.get(i);
-                result.add(cumSum);
-                i++;
-            }
-        } else {
-            // reversed selected
-            Collections.reverse(array);
-            while (i < stopIndex) {
-                cumSum += array.get(i);
-                result.add(cumSum);
-                i--;
-            }
+        List<Integer> reversedList = new ArrayList<Integer>(array);
 
+        if (reversed) {
+            Collections.reverse(reversedList);
         }
+
+        while (i < stopIndex) {
+            cumSum += reversedList.get(i);
+            result.add(i);
+            i++;
+        }
+
         return result;
     }
 
     public static void main(String[] args) {
 
-        List<Integer> list = new ArrayList<Integer>();
-
-        Collections.addAll(list, 1, 2, 3, 4, 5);
+        List<Integer> list = List.of(1, 2, 3, 4, 5);
 
         System.out.println("Executing algorithm... with array only");
         System.out.println(prefix(list));
 
         System.out.println("Executing algorithm... with array and a stop value");
-        System.out.println(prefix(list, 3));
+        System.out.println(prefix(list, 2));
 
         System.out.println("Executing algorithm... with reversed array, stop value");
-        System.out.println(prefix(list, 3, true));
+        System.out.println(prefix(list, 2, true));
 
     }
 
