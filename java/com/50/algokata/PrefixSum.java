@@ -59,11 +59,16 @@ public class PrefixSum {
      * Takes in a list of values, reverse it and returns the inclusive sum upto the
      * stop index.
      *
-     * @param array some list of postive numbers
+     * @param array     some list of postive numbers
+     * @param stopIndex a stop value
+     * @param reversed  flag indicating if the array should be reversed or not (in
+     *                  this case,
+     *                  a reversed array, simply means you performing a suffix sum)
      */
     public static ArrayList<Integer> prefix(
-            List<Integer> array, Integer stopIndex,
-            Boolean reversed) {
+            List<Integer> array,
+            Integer stopIndex,
+            boolean reversed) {
 
         int cumSum = 0;
         int i = 0;
